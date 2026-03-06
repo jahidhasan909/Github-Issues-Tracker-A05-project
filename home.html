@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- title and logo -->
+    <title>Github Issue | Tracker</title>
+    <link rel="shortcut icon" href="assets/github-logo.png" type="image/x-icon">
+
+    <!-- tailwind and daisyui -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: "Geist", sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-base-300">
+
+    <!-- navbar section -->
+    <header>
+        <div class="navbar bg-base-100 shadow-sm px-14">
+            <div class="flex-1">
+                <div class="flex text-center items-center gap-2">
+                    <img class="w-8" src="./assets/github-logo.png" alt="">
+                    <h2 class="font-semibold text-[1.10rem]">GitHub Issues Tracker</h2>
+                </div>
+
+            </div>
+            <div class="flex gap-2">
+                <label class="input">
+                    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                            stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                        </g>
+                    </svg>
+                    <input type="search" required placeholder="Search issues.." />
+                </label>
+                <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="mt-16">
+        <!-- toggle 3 button section -->
+        <section class="bg-white shadow-sm container mx-auto py-6 px-6 rounded-md space-x-2">
+            <button class="btn btn-primary text-white w-28">All</button>
+            <button class="btn w-28">Open</button>
+            <button class="btn w-28">Closed</button>
+        </section>
+
+
+        <!-- 3 tap card count section -->
+        <section
+            class="bg-white shadow-sm container mx-auto py-6 px-6 rounded-md space-x-2 flex justify-between mt-4 rounded-b-none">
+            <div class="flex gap-2">
+                <div class="bg-purple-100 rounded-[50%] p-2"> <img src="./assets/Aperture.png" alt=""></div>
+                <div>
+                    <h3 class="font-semibold"><span>50</span> Issues</h3>
+                    <p class="text-neutral/50 text-[0.90rem]">Track and manage your project issues</p>
+                </div>
+            </div>
+            <div class="flex">
+                <p class="pr-5 space-x-1"><span><i class="fa-solid fa-circle fa-xs"
+                            style="color: rgb(7, 130, 65);"></i></span><span>Open</span></p>
+                <p class="pl-2 space-x-1"><span><i class="fa-solid fa-circle fa-xs"
+                            style="color: rgb(165, 67, 228);"></i></span><span>Closed</span></p>
+            </div>
+
+        </section>
+        <hr class="container mx-auto text-gray-200">
+
+
+
+        <section id="container"
+            class="bg-base-200 shadow-sm container mx-auto rounded-md rounded-t-none grid grid-cols-4 gap-3 p-10">
+
+        </section>
+    </main>
+    <div class=></div>
+    <script src="./script/allApi.js"></script>
+</body>
+
+</html>

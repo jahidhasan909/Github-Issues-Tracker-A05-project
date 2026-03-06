@@ -13,7 +13,7 @@ const loadAllIssues = async () => {
 
 
 const issuesLevel = (arr) => {
-    const eleMake = arr.map(el => `<span class="badge ${el == 'bug' ? 'bg-red-100 text-red-400' : el == 'help wanted' ? 'bg-amber-100 text-yellow-700' : el == 'enhancement' ? 'bg-green-100 text-green-800' : 'bg-purple-200 text-purple-900'}">${el}</span>`);
+    const eleMake = arr.map(el => `<span class="badge ${el == 'bug' ? 'bg-red-100 text-red-400 text-[0.70rem]' : el == 'help wanted' ? 'bg-amber-100 text-yellow-700 text-[0.70rem]' : el == 'enhancement' ? 'bg-green-100 text-green-800 text-[0.70rem]' : 'bg-purple-200 text-purple-900 text-[0.70rem]'}">${el == 'bug' ? '<i class="fa-brands fa-android"></i>' : el == 'help wanted' ? '<i class="fa-regular fa-futbol"></i>' : el == 'enhancement' ? '<i class="fa-solid fa-star-of-david"></i>' : '<i class="fa-solid fa-align-right"></i>'}${el}</span>`);
     return eleMake.join(' ');
 }
 

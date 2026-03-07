@@ -225,7 +225,7 @@ const searchDisplay = (iss) => {
                   `;
         container.appendChild(div);
     });
-    spinnerLoading(false);
+
 
 }
 
@@ -248,11 +248,9 @@ const displayDetails = (detail) => {
                 
       <div class="space-y-4 ">
                     <h2 class="text-lg font-bold">${detail.title}</h3>
-                        <div class="text-[0.75rem]">
-                            <span class="badge ${detail.status == 'open' ? 'bg-green-200 text-green-900' : 'bg-purple-200 text-purple-900'}">${detail.status}</span> • <span>Opened
-                                by<span> ${detail.assignee}</span></span>  •    
-                                <span>CreatedAt: ${new Date(detail.createdAt).toLocaleDateString("en-US")}</span> • <span>updatedAt: ${new Date(detail.updatedAt).toLocaleDateString("en-US")}</span>
-
+                        <div class="text-[0.90rem]">
+                            <span class="badge ${detail.status == 'open' ? 'bg-green-200 text-green-900' : 'bg-purple-200 text-purple-900'}">${detail.status}</span> • <span>Opened by<span> ${detail.author}</span></span>  •    
+                                <span>${new Date(detail.createdAt).toLocaleDateString("en-US")}
                         </div>
                         <div class="">
                              ${issuesLevel(detail.labels)}
@@ -262,7 +260,7 @@ const displayDetails = (detail) => {
                         <div class="bg-base-200 rounded-md flex gap-24 p-5">
                             <div>
                                 <p>Assignee:</p>
-                                <h4 class="font-semibold text-black">${detail.assignee}</h4>
+                                <h4 class="font-semibold text-black">${detail.author}</h4>
                             </div>
                             <div>
                                 <p>Priority:</p>

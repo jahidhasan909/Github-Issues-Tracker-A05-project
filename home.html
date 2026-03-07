@@ -36,15 +36,15 @@
 
     <!-- navbar section -->
     <header>
-        <div class="navbar bg-base-100 shadow-sm px-14">
+        <div class="navbar bg-base-100 shadow-sm px-2 md:px-14">
             <div class="flex-1">
-                <div class="flex text-center items-center gap-2">
+                <div class="flex text-center items-center gap-1 md:gap-2">
                     <img class="w-8" src="./assets/github-logo.png" alt="">
-                    <h2 class="font-semibold text-[1.10rem]">GitHub Issues Tracker</h2>
+                    <h2 class="font-semibold text-[0.80rem] md:text-[1.10rem]">GitHub Issues Tracker</h2>
                 </div>
 
             </div>
-            <div class="flex gap-2">
+            <div class="flex gap-2 flex-col md:flex-row">
                 <label class="input">
                     <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
@@ -53,7 +53,7 @@
                             <path d="m21 21-4.3-4.3"></path>
                         </g>
                     </svg>
-                    <input id="input-value" class="w-48" type="search" required placeholder="Search issues.." />
+                    <input id="input-value" class="w-14 md:w-48" type="search" required placeholder="Search issues.." />
                 </label>
                 <button onclick="buttonControl('search-container');countControl('search-count')" id="search-issues"
                     class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
@@ -65,7 +65,7 @@
 
 
         <!-- toggle 3 button section -->
-        <section id="all-btn" class="bg-white shadow-sm container mx-auto py-6 px-6 rounded-md space-x-2">
+        <section id="all-btn" class="bg-white shadow-sm container mx-auto py-6 px-6 rounded-md space-x-2 space-y-1">
             <button onclick="buttonControl('container','all-tap');countControl('total-count')" id="all-tap"
                 class="btn w-28 btnActive">All</button>
             <button onclick="buttonControl('container-open-issues','open-tap');countControl('open-count')" id="open-tap"
@@ -82,7 +82,7 @@
         <section
             class="bg-white shadow-sm container mx-auto py-6 px-6 rounded-md space-x-2 flex justify-between mt-4 rounded-b-none">
             <div class="flex gap-2">
-                <div class="bg-purple-100 rounded-[50%] p-2"> <img src="./assets/Aperture.png" alt=""></div>
+                <div class="md:bg-purple-100  md:rounded-[50%] md:p-2"> <img src="./assets/Aperture.png" alt=""></div>
                 <div>
                     <h3 class="font-semibold"><span id="total-count" class="">0</span> <span id="open-count"
                             class="hidden">0</span> <span id="Closed-count" class="hidden">0</span> <span
@@ -102,12 +102,12 @@
 
 
 
-        <section id="main-container" class="bg-base-200 shadow-sm container mx-auto rounded-md rounded-t-none">
+        <section id="main-container" class="bg-base-200  shadow-sm container mx-auto rounded-md rounded-t-none">
 
-            <div id="container" class="grid grid-cols-4 gap-3 p-10"></div>
-            <div id="container-open-issues" class="grid grid-cols-4 gap-3 p-10 hidden"></div>
-            <div id="container-closed-issues" class="grid grid-cols-4 gap-3 p-10 hidden"></div>
-            <div id="search-container" class="grid grid-cols-4 gap-3 p-10 hidden"></div>
+            <div id="container" class="grid grid-cols-1 md:grid-cols-4 gap-3 p-10"></div>
+            <div id="container-open-issues" class="grid grid-cols-1 md:grid-cols-4 gap-3 p-10 hidden"></div>
+            <div id="container-closed-issues" class="grid grid-cols-1 md:grid-cols-4 gap-3 p-10 hidden"></div>
+            <div id="search-container" class="grid grid-cols-1 md:grid-cols-4 gap-3 p-10 hidden"></div>
 
         </section>
 

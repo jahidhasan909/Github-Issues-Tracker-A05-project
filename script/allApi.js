@@ -1,7 +1,4 @@
-// all section issues
-
-
-
+// all section api call ,data load and display
 
 const loadAllIssues = async () => {
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
@@ -102,7 +99,6 @@ const closedIssues = async () => {
 
 const closedIssuesDisplay = (closed) => {
     const containerOpen = document.getElementById('container-closed-issues');
-
     closed.forEach(clo => {
         const div = document.createElement('div');
 
@@ -141,9 +137,6 @@ openIssues();
 
 loadAllIssues();
 
-
-
-// let openAndClosed = [];
 
 
 

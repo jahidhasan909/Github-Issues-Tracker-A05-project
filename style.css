@@ -1,1 +1,11 @@
  @import "tailwindcss";
+
+
+ .btnNormal{
+    background-color: white;
+    color: black;
+ }
+ .btnActive{
+    background-color: rgba(4, 4, 207, 0.937);
+    color: white;
+ }

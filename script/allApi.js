@@ -53,6 +53,7 @@ const displayAllIssues = (issue) => {
                   `;
         container.appendChild(div);
     });
+    spinnerLoading(false);
 
 }
 
@@ -106,6 +107,8 @@ const openIssuesDisplay = (open) => {
         }
 
     })
+
+    spinnerLoading(false);
 
 }
 
@@ -162,6 +165,7 @@ const closedIssuesDisplay = (closed) => {
 
 
     })
+    spinnerLoading(false);
 
 }
 
@@ -221,6 +225,7 @@ const searchDisplay = (iss) => {
                   `;
         container.appendChild(div);
     });
+    spinnerLoading(false);
 
 }
 
@@ -268,9 +273,22 @@ const displayDetails = (detail) => {
                 </div>
                   `;
     document.getElementById('trees_modal').showModal();
+
+    spinnerLoading(false);
 }
 
 
+
+// page reload than loading spinner work 
+const spinnerLoading = (status) => {
+    if (status == true) {
+        document.getElementById('spinner').classList.remove('hidden');
+        document.getElementById('container').classList.add('hidden');
+    } else {
+        document.getElementById('spinner').classList.add('hidden');
+        document.getElementById('container').classList.remove('hidden');
+    }
+}
 
 
 

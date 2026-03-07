@@ -1,10 +1,19 @@
 // all section api call ,data load and display
-
+let total = 0;
 const loadAllIssues = async () => {
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
     const res = await fetch(url);
     const issues = await res.json();
     displayAllIssues(issues.data);
+
+
+    let allTotal = issues.data;
+    if (allTotal) {
+        let allLength = allTotal.length;
+        const totalCount = document.getElementById('total-count');
+        total = allLength;
+        totalCount.innerText = total;
+    }
 
 }
 
@@ -49,8 +58,17 @@ const displayAllIssues = (issue) => {
 const openIssues = async () => {
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues`;
     const res = await fetch(url);
-    const open = await res.json();
-    openIssuesDisplay(open.data);
+    const opens = await res.json();
+    openIssuesDisplay(opens.data);
+
+
+    let openTotal = opens.data.filter(issue => issue.status === 'open');
+    if (openTotal) {
+        let openLength = openTotal.length;
+        const totalCount = document.getElementById('open-count');
+        totalCount.innerText = openLength;
+
+    }
 }
 
 const openIssuesDisplay = (open) => {
@@ -95,6 +113,14 @@ const closedIssues = async () => {
     const res = await fetch(url);
     const closed = await res.json();
     closedIssuesDisplay(closed.data);
+
+
+    let closedTotal = closed.data.filter(issue => issue.status === 'closed');
+    if (closedTotal) {
+        let closedLength = closedTotal.length;
+        const totalCount = document.getElementById('Closed-count');
+        totalCount.innerText = closedLength;
+    }
 }
 
 const closedIssuesDisplay = (closed) => {
@@ -125,7 +151,10 @@ const closedIssuesDisplay = (closed) => {
 
         if (clo.status == 'closed') {
             containerOpen.appendChild(div);
+
+
         }
+
 
     })
 

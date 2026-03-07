@@ -23,5 +23,22 @@ const buttonControl = (id, id2) => {
     select.classList.remove('hidden');
     const addColor = document.getElementById(id2)
     addColor.classList.add('btnActive');
-
 }
+
+
+
+// count control section
+const countControl = (id) => {
+    const totalControl = document.getElementById('total-count');
+    totalControl.classList.add('hidden');
+
+    const openControl = document.getElementById('open-count');
+    openControl.classList.add('hidden');
+
+    const closedControl = document.getElementById('Closed-count');
+    closedControl.classList.add('hidden');
+
+    const selectOf = document.getElementById(id);
+    selectOf.classList.remove('hidden');
+}
+

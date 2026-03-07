@@ -53,9 +53,10 @@
                             <path d="m21 21-4.3-4.3"></path>
                         </g>
                     </svg>
-                    <input type="search" required placeholder="Search issues.." />
+                    <input id="input-value" class="w-48" type="search" required placeholder="Search issues.." />
                 </label>
-                <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
+                <button onclick="buttonControl('search-container');countControl('search-count')" id="search-issues"
+                    class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
             </div>
         </div>
     </header>
@@ -79,7 +80,8 @@
                 <div class="bg-purple-100 rounded-[50%] p-2"> <img src="./assets/Aperture.png" alt=""></div>
                 <div>
                     <h3 class="font-semibold"><span id="total-count" class="">0</span> <span id="open-count"
-                            class="hidden">0</span> <span id="Closed-count" class="hidden">0</span> Issues</h3>
+                            class="hidden">0</span> <span id="Closed-count" class="hidden">0</span> <span
+                            id="search-count" class="hidden">0</span> Issues</h3>
                     <p class="text-neutral/50 text-[0.90rem]">Track and manage your project issues</p>
                 </div>
             </div>
@@ -100,6 +102,8 @@
             <div id="container" class="grid grid-cols-4 gap-3 p-10"></div>
             <div id="container-open-issues" class="grid grid-cols-4 gap-3 p-10 hidden"></div>
             <div id="container-closed-issues" class="grid grid-cols-4 gap-3 p-10 hidden"></div>
+            <div id="search-container" class="grid grid-cols-4 gap-3 p-10 hidden"></div>
+
         </section>
     </main>
     <div class=></div>

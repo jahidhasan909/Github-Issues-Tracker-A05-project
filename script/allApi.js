@@ -1,5 +1,5 @@
 // all section api call ,data load and display
-let total = 0;
+
 const loadAllIssues = async () => {
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
     const res = await fetch(url);
@@ -11,8 +11,8 @@ const loadAllIssues = async () => {
     if (allTotal) {
         let allLength = allTotal.length;
         const totalCount = document.getElementById('total-count');
-        total = allLength;
-        totalCount.innerText = total;
+        totalCount.innerText = allLength;
+
     }
 
 }
@@ -159,6 +159,68 @@ const closedIssuesDisplay = (closed) => {
     })
 
 }
+
+
+
+
+// search functionality 
+document.getElementById('search-issues').addEventListener('click', () => {
+    const input = document.getElementById('input-value');
+    const inputValue = input.value.trim().toLowerCase();
+
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${inputValue}`
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            const allIssues = data.data;
+            searchDisplay(allIssues);
+            const issueData = data.data;
+            if (issueData) {
+                const issueCount = issueData.length;
+                const searchCount = document.getElementById('search-count');
+                searchCount.innerText = issueCount;
+            }
+            countControl('search-count');
+        })
+
+
+});
+
+
+
+const searchDisplay = (iss) => {
+    const container = document.getElementById('search-container');
+    container.innerHTML = ''
+
+    iss.forEach(issue => {
+        const div = document.createElement('div');
+        div.innerHTML = `
+                    <div class="card bg-base-100 card-xs shadow-sm w-72 h-64 ${issue.status == 'open' ? "border-t-4 border-green-400" : "border-t-4 border-purple-400"}">
+                     <div class="space-y-3">
+                     <div class="flex justify-between px-3 mt-5">
+                     <div>${issue.status == 'open' ? '<img src="./assets/Open-Status.png" alt="">' : '<img src="./assets/Closed- Status .png" alt="">'}</div>
+                     <div class="badge ${issue.priority == 'high' ? 'bg-red-100 text-red-500' : issue.priority == 'medium' ? 'bg-yellow-100 text-yellow-600' : 'bg-gray-200 text-gray-500'}">${issue.priority}</div>
+                     </div>
+                     <h2 class="card-title text-[0.90rem] line-clamp-1 mt-1 px-3">${issue.title}</h2>
+                     <p class="line-clamp-2 overflow-hidden px-3 text-[0.70rem] text-neutral/60">${issue.description}</p>
+                     <div class="px-3 space-x-2">
+                     ${issuesLevel(issue.labels)}
+                     </div>
+                     <hr class="text-gray-300">
+                     <div class="text-[0.70rem] space-y-2 mb-1 text-neutral/60 px-2">
+                     <p><span>#${issue.id}</span> ${issue.author}</p>
+                     <p>${new Date(issue.createdAt).toLocaleDateString("en-US")}</p>
+                     </div>
+                     </div>
+                     </div>
+                  `;
+        container.appendChild(div);
+    });
+
+}
+
+
+
 
 closedIssues();
 

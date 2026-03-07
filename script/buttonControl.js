@@ -4,6 +4,8 @@
 
 const buttonControl = (id, id2) => {
 
+    const searchContainer = document.getElementById('search-container');
+    searchContainer.classList.add('hidden');
     const container = document.getElementById('container');
     container.classList.add('hidden');
 
@@ -37,6 +39,9 @@ const countControl = (id) => {
 
     const closedControl = document.getElementById('Closed-count');
     closedControl.classList.add('hidden');
+
+    const searchCount = document.getElementById('search-count');
+    searchCount.classList.add('hidden');
 
     const selectOf = document.getElementById(id);
     selectOf.classList.remove('hidden');

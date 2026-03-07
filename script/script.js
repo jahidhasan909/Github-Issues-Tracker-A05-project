@@ -13,7 +13,7 @@ document.getElementById('sing-In-btn').addEventListener('click', () => {
         return;
     }
     if (userValue == 'admin' && passwordValue == 'admin123') {
-        window.location.replace("home.html");
+        window.location.assign("./home.html");
         alert('Sing In Successful');
     }
 })

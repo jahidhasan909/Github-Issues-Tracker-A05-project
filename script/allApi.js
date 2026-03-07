@@ -1,5 +1,7 @@
 // all section api call ,data load and display
 
+
+// all issues api call and display
 const loadAllIssues = async () => {
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
     const res = await fetch(url);
@@ -36,7 +38,7 @@ const displayAllIssues = (issue) => {
                      <div>${iss.status == 'open' ? '<img src="./assets/Open-Status.png" alt="">' : '<img src="./assets/Closed- Status .png" alt="">'}</div>
                      <div class="badge ${iss.priority == 'high' ? 'bg-red-100 text-red-500' : iss.priority == 'medium' ? 'bg-yellow-100 text-yellow-600' : 'bg-gray-200 text-gray-500'}">${iss.priority}</div>
                      </div>
-                     <h2 class="card-title text-[0.90rem] line-clamp-1 mt-1 px-3">${iss.title}</h2>
+                     <h2 onclick="detailsLoad('${iss.id}')" class="card-title hover:shadow hover:cursor-pointer text-[0.90rem] line-clamp-1 mt-1 px-3">${iss.title}</h2>
                      <p class="line-clamp-2 overflow-hidden px-3 text-[0.70rem] text-neutral/60">${iss.description}</p>
                      <div class="px-3 space-x-2">
                      ${issuesLevel(iss.labels)}
@@ -55,6 +57,7 @@ const displayAllIssues = (issue) => {
 }
 
 
+// openIssues api call and display
 const openIssues = async () => {
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues`;
     const res = await fetch(url);
@@ -84,7 +87,7 @@ const openIssuesDisplay = (open) => {
                      <div>${op.status == 'open' ? '<img src="./assets/Open-Status.png" alt="">' : '<img src="./assets/Closed- Status .png" alt="">'}</div>
                      <div class="badge ${op.priority == 'high' ? 'bg-red-100 text-red-500' : op.priority == 'medium' ? 'bg-yellow-100 text-yellow-600' : 'bg-gray-200 text-gray-500'}">${op.priority}</div>
                      </div>
-                     <h2 class="card-title text-[0.90rem] line-clamp-1 mt-1 px-3">${op.title}</h2>
+                     <h2 onclick="detailsLoad('${op.id}')" class="card-title hover:shadow hover:cursor-pointer text-[0.90rem] line-clamp-1 mt-1 px-3">${op.title}</h2>
                      <p class="line-clamp-2 overflow-hidden px-3 text-[0.70rem] text-neutral/60">${op.description}</p>
                      <div class="px-3 space-x-2">
                      ${issuesLevel(op.labels)}
@@ -108,6 +111,8 @@ const openIssuesDisplay = (open) => {
 
 
 
+
+// closedIssues api call and display
 const closedIssues = async () => {
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues`;
     const res = await fetch(url);
@@ -135,7 +140,7 @@ const closedIssuesDisplay = (closed) => {
                      <div>${clo.status == 'open' ? '<img src="./assets/Open-Status.png" alt="">' : '<img src="./assets/Closed- Status .png" alt="">'}</div>
                      <div class="badge ${clo.priority == 'high' ? 'bg-red-100 text-red-500' : clo.priority == 'medium' ? 'bg-yellow-100 text-yellow-600' : 'bg-gray-200 text-gray-500'}">${clo.priority}</div>
                      </div>
-                     <h2 class="card-title text-[0.90rem] line-clamp-1 mt-1 px-3">${clo.title}</h2>
+                     <h2 onclick="detailsLoad('${clo.id}')" class="card-title hover:shadow hover:cursor-pointer text-[0.90rem] line-clamp-1 mt-1 px-3">${clo.title}</h2>
                      <p class="line-clamp-2 overflow-hidden px-3 text-[0.70rem] text-neutral/60">${clo.description}</p>
                      <div class="px-3 space-x-2">
                      ${issuesLevel(clo.labels)}
@@ -201,7 +206,7 @@ const searchDisplay = (iss) => {
                      <div>${issue.status == 'open' ? '<img src="./assets/Open-Status.png" alt="">' : '<img src="./assets/Closed- Status .png" alt="">'}</div>
                      <div class="badge ${issue.priority == 'high' ? 'bg-red-100 text-red-500' : issue.priority == 'medium' ? 'bg-yellow-100 text-yellow-600' : 'bg-gray-200 text-gray-500'}">${issue.priority}</div>
                      </div>
-                     <h2 class="card-title text-[0.90rem] line-clamp-1 mt-1 px-3">${issue.title}</h2>
+                     <h2 onclick="detailsLoad('${issue.id}')" class="card-title hover:shadow hover:cursor-pointer text-[0.90rem] line-clamp-1 mt-1 px-3">${issue.title}</h2>
                      <p class="line-clamp-2 overflow-hidden px-3 text-[0.70rem] text-neutral/60">${issue.description}</p>
                      <div class="px-3 space-x-2">
                      ${issuesLevel(issue.labels)}
@@ -218,6 +223,53 @@ const searchDisplay = (iss) => {
     });
 
 }
+
+
+
+
+
+// issues card title click open details of modal functionality
+
+const detailsLoad = async (id) => {
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+    const res = await fetch(url);
+    const detail = await res.json();
+    displayDetails(detail.data);
+}
+
+const displayDetails = (detail) => {
+    const container = document.getElementById('details-container');
+    container.innerHTML = `
+                
+      <div class="space-y-4 ">
+                    <h2 class="text-lg font-bold">${detail.title}</h3>
+                        <div class="text-[0.75rem]">
+                            <span class="badge ${detail.status == 'open' ? 'bg-green-200 text-green-900' : 'bg-purple-200 text-purple-900'}">${detail.status}</span> • <span>Opened
+                                by<span> ${detail.assignee}</span></span>  •    
+                                <span>CreatedAt: ${new Date(detail.createdAt).toLocaleDateString("en-US")}</span> • <span>updatedAt: ${new Date(detail.updatedAt).toLocaleDateString("en-US")}</span>
+
+                        </div>
+                        <div class="">
+                             ${issuesLevel(detail.labels)}
+                        </div>
+                        <p>${detail.description}</p>
+
+                        <div class="bg-base-200 rounded-md flex gap-24 p-5">
+                            <div>
+                                <p>Assignee:</p>
+                                <h4 class="font-semibold text-black">${detail.assignee}</h4>
+                            </div>
+                            <div>
+                                <p>Priority:</p>
+                                <span class="badge ${detail.priority == 'high' ? 'bg-red-100 text-red-500' : detail.priority == 'medium' ? 'bg-yellow-100 text-yellow-600' : 'bg-gray-200 text-gray-500'}">${detail.priority}</span>
+                            </div>
+
+                        </div>
+                </div>
+                  `;
+    document.getElementById('trees_modal').showModal();
+}
+
 
 
 

@@ -250,7 +250,7 @@ const displayDetails = (detail) => {
                     <h2 class="text-lg font-bold">${detail.title}</h3>
                         <div class="text-[0.90rem]">
                             <span class="badge ${detail.status == 'open' ? 'bg-green-200 text-green-900' : 'bg-purple-200 text-purple-900'}">${detail.status}</span> • <span>Opened by<span> ${detail.author}</span></span>  •    
-                                <span>${new Date(detail.createdAt).toLocaleDateString("en-US")}
+                                <span>${new Date(detail.updatedAt).toLocaleDateString("en-US")}
                         </div>
                         <div class="">
                              ${issuesLevel(detail.labels)}
@@ -260,7 +260,7 @@ const displayDetails = (detail) => {
                         <div class="bg-base-200 rounded-md flex gap-24 p-5">
                             <div>
                                 <p>Assignee:</p>
-                                <h4 class="font-semibold text-black">${detail.author}</h4>
+                                <h4 class="font-semibold text-black">${detail.assignee == '' ? detail.author : detail.assignee}</h4>
                             </div>
                             <div>
                                 <p>Priority:</p>
